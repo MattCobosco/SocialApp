@@ -1,10 +1,14 @@
-import React from 'react';
 import './App.css';
+import { SocialAppLayout } from './common/components/Layout';
+import { Routing } from './routes';
 
 function App() {
   return (
-    <>Blah</>
+    <SocialAppLayout>
+      <Routing />
+      </SocialAppLayout>
   );
+
 }
 
 export default App;
