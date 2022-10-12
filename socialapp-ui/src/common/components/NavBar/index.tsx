@@ -1,6 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavItem } from "../../../models/navItem";
+import { NavButton } from "./NavButton";
 import { useNavItems } from "./navItems";
+import "./navBar.css";
+
+const logoPath = process.env.PUBLIC_URL + "/assets/logo/";
 
 export const NavBar = () => {
   const location = useLocation();
@@ -17,27 +21,18 @@ export const NavBar = () => {
 
   const buildNavItem = (navItem: NavItem) => {
     return (
-      <button
-        onClick={() => navigationClick(navItem)}
-      >
-        {navItem.title}
-      </button>
+      <NavButton key={navItem.id} label={navItem.title} onClick={() => navigationClick(navItem)} />
     );
   };
 
   const navigation = nav.map(navItem => buildNavItem(navItem));
 
   return (
-    <nav style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "0 1rem",
-      height: "3rem",
-      backgroundColor: "white",
-      width: "200px",
-    }}>
-      {navigation}
+    <nav className="nav">
+      <div className="nav_logo-wrapper" onClick={() => navigate("/")}>
+        <img className="nav_logo" src={logoPath + "social-app-logo.png"} alt="logo" />
+      </div>
+      <div className="nav_items">{navigation}</div>
     </nav>
   );
 };

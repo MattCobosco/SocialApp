@@ -14,9 +14,16 @@ export const useNavItems = () => {
     title: "Profile",
   };
 
+  const Auth: NavItem = {
+    id: SocialAppRoutes.Auth,
+    icon: "login",
+    title: "Login/Register",
+  };
+
   const navItems: NavItem[] = [
     Feed,
-    Profile
+    Profile,
+    Auth,
   ];
 
   return navItems;

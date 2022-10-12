@@ -1,11 +1,13 @@
 import React, { useCallback } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Auth } from "./pages/Auth";
 import { Feed } from "./pages/Feed";
 import { Profile } from "./pages/Profile";
 
 export enum SocialAppRoutes {
   Feed = "/",
-  Profile = "/Profile"
+  Profile = "/Profile",
+  Auth = "/Auth"
 }
 
 interface IRouteEntry {
@@ -38,6 +40,12 @@ const routes: IRouteEntry[] = [
     exact: true,
     key: "profile",
   },
+  {
+    component: <Auth />,
+    path: SocialAppRoutes.Auth,
+    exact: true,
+    key: "auth",
+  }
 ];
 
 export const Routing = () => {
