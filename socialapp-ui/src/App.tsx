@@ -1,12 +1,16 @@
-import './App.css';
+import { Fragment } from 'react';
 import { SocialAppLayout } from './common/components/Layout';
+import { GlobalStyle } from './common/styledHelpers/global';
 import { Routing } from './routes';
 
 function App() {
   return (
-    <SocialAppLayout>
-      <Routing />
+    <Fragment>
+      <GlobalStyle />
+      <SocialAppLayout>
+        <Routing />
       </SocialAppLayout>
+    </Fragment>
   );
 
 }

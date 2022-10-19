@@ -1,15 +1,41 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { NavItem } from "../../../models/navItem";
+import { colorPalette } from "../../styledHelpers/colorPalette";
 import { NavButton } from "./NavButton";
 import { useNavItems } from "./navItems";
-import "./navBar.css";
 
 const logoPath = process.env.PUBLIC_URL + "/assets/logo/";
 
 export const NavBar = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const nav = useNavItems();
+
+  const Wrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${colorPalette.black}
+    width: 100%;
+  `;
+
+  const Logo = styled.div`
+    height: 60px;
+    width: 180px;
+    background-image: url(${logoPath}social-app-logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+  `;
+
+  const NavButtonsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  `;
 
   const navigationClick = (clicked: NavItem) => {
     if (clicked.id) {
@@ -28,11 +54,9 @@ export const NavBar = () => {
   const navigation = nav.map(navItem => buildNavItem(navItem));
 
   return (
-    <nav className="nav">
-      <div className="nav_logo-wrapper" onClick={() => navigate("/")}>
-        <img className="nav_logo" src={logoPath + "social-app-logo.png"} alt="logo" />
-      </div>
-      <div className="nav_items">{navigation}</div>
-    </nav>
+    <Wrapper>
+      <Logo onClick={() => navigate("/")} />
+      <NavButtonsWrapper>{navigation}</NavButtonsWrapper>
+    </Wrapper>
   );
 };

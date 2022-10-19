@@ -1,4 +1,5 @@
-import "./navButton.css";
+import styled from "styled-components";
+import { colorPalette } from "../../../styledHelpers/colorPalette";
 
 interface NavButtonProps {
   label: string;
@@ -9,25 +10,19 @@ interface NavButtonProps {
 }
 
 export const NavButton = (props:NavButtonProps) => {
-  const { label, onClick, style, customClassName, className } = props;
+  const { label, onClick, style } = props;
 
-  const getClassNames = () => {
-    const classNames = ["nav_nav-button"];
-
-    if (customClassName && className) {
-      classNames.push(className);
-    }
-
-    return classNames.join(" ");
-  };
-
+  const Button = styled.button`
+    background-color: ${colorPalette.white};
+    heght: 100%;
+    border: none;
+    `;
 
   return (
-    <button
-      className={getClassNames()}
+    <Button
       onClick={onClick}
       style={style}>
       {label}
-    </button>
+    </Button>
   );
 };
