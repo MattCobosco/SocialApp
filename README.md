@@ -6,7 +6,9 @@
 
 ### Added
 
-- Added some frame code for redux state
+- Added some basic code for redux state
+
+- This changelog :)
 
 ## 2022-10-19
 
