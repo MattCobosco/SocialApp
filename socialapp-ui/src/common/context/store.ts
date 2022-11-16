@@ -1,11 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { setupListeners } from "@reduxjs/toolkit/query";
-import { appFilterReducer } from "./slices/appFilterSlice";
 
-const store = configureStore({
-  reducer: {
-    appFilter: appFilterReducer,
-  },
-});
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './reducers';
 
-setupListeners(store.dispatch);
+export const store = createStore(reducers, applyMiddleware(thunk));
+
+export default store;
